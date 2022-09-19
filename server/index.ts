@@ -11,8 +11,11 @@ app.use(cors());
 app.use(express.json());
 
 config();
-const token = createToken({
-  participantName: 'Burak',
-  roomName: 'room-test'
+
+app.get('/', (req, res) => {
+  return res.send({ message: 'This is test' });
 });
-console.log('access token', token);
+
+app.listen(port, () => {
+  console.log(`Express server running on port ${port}`);
+});
