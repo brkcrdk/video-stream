@@ -7,8 +7,8 @@ import {
 interface Props {
   roomName: string;
   participantName: string;
-  accessTokenOpts: AccessTokenOptions;
-  grantOpts: VideoGrant;
+  accessTokenOpts?: AccessTokenOptions;
+  grantOpts?: VideoGrant;
 }
 
 const createToken = ({
@@ -17,7 +17,7 @@ const createToken = ({
   accessTokenOpts,
   grantOpts
 }: Props) => {
-  const at = new AccessToken('api-key', 'secret-key', {
+  const at = new AccessToken(process.env.API_KEY, process.env.SECRET_KEY, {
     identity: participantName,
     ...accessTokenOpts
   });
