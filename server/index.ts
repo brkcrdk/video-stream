@@ -1,3 +1,5 @@
+import { config } from 'dotenv';
+config();
 import { AccessToken } from 'livekit-server-sdk';
 
 const roomName = 'name-of-room';
