@@ -1,0 +1,11 @@
+{
+  "name": "livekit",
+  "version": "1.0.0",
+  "description": "LiveKit video stream application demo",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Burak Çardak",
+  "license": "ISC"
+}
