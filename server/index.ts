@@ -1,6 +1,12 @@
-const test = <T>(param: T) => {
-  console.log(param);
-  return param;
-};
+import { AccessToken } from 'livekit-server-sdk';
 
-test<string>('tst');
+const roomName = 'name-of-room';
+const participantName = 'user-name';
+
+const at = new AccessToken('api-key', 'secret-key', {
+  identity: participantName
+});
+at.addGrant({ roomJoin: true, room: roomName });
+
+const token = at.toJwt();
+console.log('access token', token);
