@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "e2eTest": "playwright test",
-    "unitTest": "jest --watch"
+    "unitTest": "jest --watch",
+    "e2e": "cypress open",
+    "e2e:headless": "cypress run"
   },
   "dependencies": {
     "next": "12.3.1",
@@ -16,7 +17,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.26.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/node": "18.7.20",
@@ -24,6 +24,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "cypress": "^10.8.0",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
