@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2eTest": "playwright test",
+    "unitTest": "jest --watch"
   },
   "dependencies": {
     "next": "12.3.1",
@@ -15,6 +17,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.26.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@types/node": "18.7.20",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
@@ -25,7 +29,10 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.0.3",
+    "jest-environment-jsdom": "^29.0.3",
     "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
     "typescript": "4.8.3"
   }
 }
