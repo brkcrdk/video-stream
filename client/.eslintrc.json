@@ -11,9 +11,6 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
   "rules": {
     "import/no-anonymous-default-export": "off",
     "react/react-in-jsx-scope": "off",
@@ -49,8 +46,8 @@
         "groups": [
           "builtin",
           "external",
-          "object",
           "type",
+          "object",
           "internal",
           "parent",
           "sibling",
