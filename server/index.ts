@@ -4,18 +4,18 @@ import cors from 'cors';
 
 import { createToken } from 'utils';
 
-const app = express();
 const port = 4000;
-
-app.use(cors());
-app.use(express.json());
+const app = express();
 
 config();
+app.use(cors());
 
-app.get('/', (req, res) => {
-  return res.send({ message: 'This is test' });
+app.get('/createToken', (req, res) => {
+  const token = createToken({ roomName: 'testRoom', participantName: 'burak' });
+  console.log(token);
+  return res.send({ token });
 });
 
-app.listen(port, () => {
+app.listen(port, function () {
   console.log(`Express server running on port ${port}`);
 });
