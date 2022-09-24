@@ -1,5 +1,5 @@
 function Home() {
-  return <div>Livekit Test Application</div>;
+  return <div data-test-id="testElement">Livekit Test Application</div>;
 }
 
 export default Home;
