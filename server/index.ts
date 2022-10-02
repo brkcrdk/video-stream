@@ -9,10 +9,10 @@ const app = express();
 
 config();
 app.use(cors());
+app.use(express.json());
 
-app.get('/createToken', (req, res) => {
+app.post('/createToken', (req, res) => {
   const token = createToken({ roomName: 'testRoom', participantName: 'burak' });
-  console.log(token);
   return res.send({ token });
 });
 
