@@ -1,13 +1,13 @@
 import { AccessToken } from 'livekit-server-sdk';
 
-import { CretateTokenProps } from 'types';
+import { CreateTokenProps } from 'types';
 
 const createToken = ({
   roomName,
   participantName,
   accessTokenOpts,
   grantOpts
-}: CretateTokenProps) => {
+}: CreateTokenProps) => {
   const at = new AccessToken(process.env.API_KEY, process.env.SECRET_KEY, {
     identity: participantName,
     ...accessTokenOpts
