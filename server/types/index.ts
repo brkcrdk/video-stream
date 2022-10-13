@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { AccessTokenOptions, VideoGrant } from 'livekit-server-sdk';
 
-export interface CretateTokenProps {
+export interface CreateTokenProps {
   roomName: string;
   participantName: string;
   accessTokenOpts?: AccessTokenOptions;

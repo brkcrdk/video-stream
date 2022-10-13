@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { VideoElement } from 'components';
 import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack } from 'livekit-client';
 
-import { CretateTokenProps } from '../../../server/types';
+import { CreateTokenProps } from '../../../server/types';
 
 function PreJoin() {
   const [roomName, setRoomName] = useState('');
@@ -27,7 +27,7 @@ function PreJoin() {
   }, []);
 
   const handleConnect = async () => {
-    const createTokenOptions: CretateTokenProps = {
+    const createTokenOptions: CreateTokenProps = {
       roomName,
       participantName,
     };
