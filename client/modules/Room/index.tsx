@@ -18,7 +18,7 @@ function Room() {
   return (
     <LiveKitRoom
       token={String(token)}
-      url="ws://localhost:7880"
+      url={String(process.env.NEXT_PUBLIC_WEB_SOCKET_URL)}
       onLeave={() => push('/')}
       roomOptions={{
         adaptiveStream: true,
