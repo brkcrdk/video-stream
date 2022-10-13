@@ -34,6 +34,22 @@ function PreJoin() {
     const response: { token: string } = await request.json();
     console.log(response.token);
   };
+
+  const toggleVideo = async () => {
+    if (videoEnabled) {
+      setVideoEnabled(false);
+      videoTrack?.stop();
+    } else {
+      const track = await createLocalVideoTrack({
+        resolution: VideoPresets.h720.resolution,
+      });
+      setVideoTrack(track);
+      setVideoEnabled(true);
+    }
+  };
+
+  const toggleAudio = () => setAudioEnabled(prev => !prev);
+
   return (
     <div style={{ padding: 10, display: 'grid', gap: 16 }}>
       <header>
@@ -53,28 +69,8 @@ function PreJoin() {
         videoTrack={videoEnabled ? videoTrack : null}
         isLocal
       />
-      <button
-        onClick={async () => {
-          if (videoEnabled) {
-            setVideoEnabled(false);
-
-            videoTrack?.mute();
-            videoTrack?.stop();
-
-            console.log(videoTrack?.isUserProvided);
-          } else {
-            const track = await createLocalVideoTrack({
-              resolution: VideoPresets.h720.resolution,
-            });
-            setVideoTrack(track);
-            // videoTrack?.unmute();
-            setVideoEnabled(true);
-          }
-        }}
-      >
-        Video Aç/Kapa
-      </button>
-      <button onClick={() => setAudioEnabled(p => !p)}>Sesi Aç/Kapa</button>
+      <button onClick={toggleVideo}>Video Aç/Kapa</button>
+      <button onClick={toggleAudio}>Sesi Aç/Kapa</button>
     </div>
   );
 }
