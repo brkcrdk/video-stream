@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import { VideoElement } from 'components';
 import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack } from 'livekit-client';
 
+import { CretateTokenProps } from '../../../server/types';
+
 function PreJoin() {
   const [roomName, setRoomName] = useState('');
   const [participantName, setParticipantName] = useState('');
@@ -25,15 +27,16 @@ function PreJoin() {
   }, []);
 
   const handleConnect = async () => {
+    const createTokenOptions: CretateTokenProps = {
+      roomName,
+      participantName,
+    };
     const request = await fetch('http://localhost:4000/createToken', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        roomName,
-        participantName,
-      }),
+      body: JSON.stringify(createTokenOptions),
     });
     const response: { token: string } = await request.json();
     videoTrack?.stop();

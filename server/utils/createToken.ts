@@ -1,22 +1,13 @@
-import {
-  AccessToken,
-  AccessTokenOptions,
-  VideoGrant
-} from 'livekit-server-sdk';
+import { AccessToken } from 'livekit-server-sdk';
 
-interface Props {
-  roomName: string;
-  participantName: string;
-  accessTokenOpts?: AccessTokenOptions;
-  grantOpts?: VideoGrant;
-}
+import { CretateTokenProps } from 'types';
 
 const createToken = ({
   roomName,
   participantName,
   accessTokenOpts,
   grantOpts
-}: Props) => {
+}: CretateTokenProps) => {
   const at = new AccessToken(process.env.API_KEY, process.env.SECRET_KEY, {
     identity: participantName,
     ...accessTokenOpts
