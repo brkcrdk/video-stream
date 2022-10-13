@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/createToken', (req: GenericRequest<CreateTokenProps>, res) => {
-  const token = createToken({ roomName: 'testRoom', participantName: 'burak' });
+  const token = createToken(req.body);
   return res.send({ token });
 });
 
