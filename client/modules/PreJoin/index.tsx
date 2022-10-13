@@ -36,6 +36,7 @@ function PreJoin() {
       }),
     });
     const response: { token: string } = await request.json();
+    videoTrack?.stop();
     push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
   };
 
