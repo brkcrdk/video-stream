@@ -1,15 +1,21 @@
-import { VideoRenderer } from '@livekit/react-core';
+import { VideoRenderer, VideoRendererProps } from '@livekit/react-core';
 import { LocalVideoTrack } from 'livekit-client';
 import { AspectRatio } from 'react-aspect-ratio';
 
-interface Props {
+/**
+ * VideoRendererProps'un içinden
+ * - track propu yerine videoTrack propunu kullanmak için
+ * - isLocal propup da kendi oluşturduğumuz isLocal prop ile çakıştığı için VideoRendererPropstan çıkarıp öyle extend ediyoruz.
+ */
+type RendererProps = Omit<VideoRendererProps, 'track' | 'isLocal'>;
+interface Props extends RendererProps {
   videoTrack: LocalVideoTrack | null;
   isLocal?: boolean;
 }
 
 function VideoElement({ videoTrack, isLocal = false }: Props) {
   return (
-    <div style={{ aspectRatio: 16 / 9, margin: '0 auto', maxWidth: 1440 }}>
+    <div style={{ aspectRatio: 16 / 9, margin: '0 auto', maxWidth: 1440, width: '100%' }}>
       <AspectRatio
         ratio={16 / 9}
         style={{ height: '100%' }}
