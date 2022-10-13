@@ -5,6 +5,7 @@ import { VideoPresets } from 'livekit-client';
 
 function Room() {
   const {
+    push,
     query: { token },
   } = useRouter();
 
@@ -18,6 +19,7 @@ function Room() {
     <LiveKitRoom
       token={String(token)}
       url="ws://localhost:7880"
+      onLeave={() => push('/')}
       roomOptions={{
         adaptiveStream: true,
         videoCaptureDefaults: {
