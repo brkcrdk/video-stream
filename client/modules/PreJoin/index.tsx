@@ -39,8 +39,9 @@ function PreJoin() {
       body: JSON.stringify(createTokenOptions),
     });
     const response: { token: string } = await request.json();
-    videoTrack?.stop();
-    push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
+    console.log(response.token);
+    // videoTrack?.stop();
+    // push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
   };
 
   const toggleVideo = async () => {
