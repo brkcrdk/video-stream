@@ -6,14 +6,15 @@ import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack, VideoPre
 function PreJoin() {
   const [roomName, setRoomName] = useState('');
   const [participantName, setParticipantName] = useState('');
-  // const [videoEnabled, setVideoEnabled] = useState(true);
-  // const [audioEnabled, setAudioEnabled] = useState(true);
+  const [videoEnabled, setVideoEnabled] = useState(true);
+  const [audioEnabled, setAudioEnabled] = useState(true);
   const [videoTrack, setVideoTrack] = useState<LocalVideoTrack | null>(null);
 
   useEffect(() => {
     const getLocalVideo = async () => {
       const localVideo = await createLocalVideoTrack({ resolution: VideoPresets.h720.resolution });
       await createLocalAudioTrack();
+
       setVideoTrack(localVideo);
     };
     getLocalVideo();
@@ -49,9 +50,31 @@ function PreJoin() {
         <button onClick={handleConnect}>Connect to Room</button>
       </header>
       <VideoElement
-        videoTrack={videoTrack}
+        videoTrack={videoEnabled ? videoTrack : null}
         isLocal
       />
+      <button
+        onClick={async () => {
+          if (videoEnabled) {
+            setVideoEnabled(false);
+
+            videoTrack?.mute();
+            videoTrack?.stop();
+
+            console.log(videoTrack?.isUserProvided);
+          } else {
+            const track = await createLocalVideoTrack({
+              resolution: VideoPresets.h720.resolution,
+            });
+            setVideoTrack(track);
+            // videoTrack?.unmute();
+            setVideoEnabled(true);
+          }
+        }}
+      >
+        Video Aç/Kapa
+      </button>
+      <button onClick={() => setAudioEnabled(p => !p)}>Sesi Aç/Kapa</button>
     </div>
   );
 }
