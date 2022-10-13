@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { AccessTokenOptions, VideoGrant } from 'livekit-server-sdk';
 
 export interface CretateTokenProps {
@@ -5,4 +6,8 @@ export interface CretateTokenProps {
   participantName: string;
   accessTokenOpts?: AccessTokenOptions;
   grantOpts?: VideoGrant;
+}
+
+export interface GenericRequest<T> extends Request {
+  body: T;
 }
