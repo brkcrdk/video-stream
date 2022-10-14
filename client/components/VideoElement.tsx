@@ -24,6 +24,9 @@ function VideoElement({ videoTrack, isLocal = false }: Props) {
           <VideoRenderer
             track={videoTrack}
             isLocal={isLocal}
+            objectFit="contain"
+            width="100%"
+            height="100%"
           />
         ) : (
           <div
