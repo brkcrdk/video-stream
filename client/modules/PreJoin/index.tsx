@@ -3,27 +3,24 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { VideoElement } from 'components';
-import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack } from 'livekit-client';
+import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack, isBrowserSupported } from 'livekit-client';
 
 import { CreateTokenProps } from '../../../server/types';
 
 function PreJoin() {
   const [roomName, setRoomName] = useState('');
   const [participantName, setParticipantName] = useState('');
-  const [videoEnabled, setVideoEnabled] = useState(true);
+  const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [videoTrack, setVideoTrack] = useState<LocalVideoTrack | null>(null);
 
   const { push } = useRouter();
 
   useEffect(() => {
-    const getLocalVideo = async () => {
-      const localVideo = await createLocalVideoTrack();
+    const getLocalAudio = async () => {
       await createLocalAudioTrack();
-
-      setVideoTrack(localVideo);
     };
-    getLocalVideo();
+    getLocalAudio();
   }, []);
 
   const handleConnect = async () => {
@@ -40,14 +37,15 @@ function PreJoin() {
     });
     const response: { token: string } = await request.json();
     console.log(response.token);
-    // videoTrack?.stop();
-    // push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
+    videoTrack?.stop();
+    push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
   };
 
   const toggleVideo = async () => {
     if (videoEnabled) {
-      setVideoEnabled(false);
       videoTrack?.stop();
+      setVideoEnabled(false);
+      setVideoTrack(null);
     } else {
       const track = await createLocalVideoTrack();
       setVideoTrack(track);

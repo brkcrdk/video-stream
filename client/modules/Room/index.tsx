@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { DisplayContext, DisplayOptions, LiveKitRoom, useRoom, useParticipant } from '@livekit/react-components';
 import { VideoPresets } from 'livekit-client';
 
+import StageRenderer from './StageRenderer';
 function Room() {
   const {
     push,
@@ -10,8 +11,6 @@ function Room() {
   } = useRouter();
 
   const { room, participants } = useRoom();
-
-  console.log({ participants });
 
   if (!token) return null;
 
@@ -26,6 +25,7 @@ function Room() {
           resolution: VideoPresets.h720.resolution,
         },
       }}
+      stageRenderer={StageRenderer}
     />
   );
 }
