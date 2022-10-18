@@ -36,7 +36,7 @@ function RoomT() {
           resolution: VideoPresets.h720.resolution,
         },
       }}
-      // stageRenderer={StageRenderer}
+      stageRenderer={StageRenderer}
     />
   );
 }
