@@ -1,5 +1,5 @@
 import { VideoRenderer, VideoRendererProps } from '@livekit/react-core';
-import { LocalVideoTrack } from 'livekit-client';
+import { LocalVideoTrack, Track } from 'livekit-client';
 import { AspectRatio } from 'react-aspect-ratio';
 
 /**
@@ -9,23 +9,25 @@ import { AspectRatio } from 'react-aspect-ratio';
  */
 type RendererProps = Omit<VideoRendererProps, 'track' | 'isLocal'>;
 interface Props extends RendererProps {
-  videoTrack: LocalVideoTrack | null;
+  videoTrack: LocalVideoTrack | Track | null;
   isLocal?: boolean;
+  isPreviewVideo?: boolean;
 }
 
-function VideoElement({ videoTrack, isLocal = false }: Props) {
+function VideoElement({ videoTrack, isLocal = false, isPreviewVideo = false, objectFit = 'contain', ...props }: Props) {
   return (
     <AspectRatio
       ratio={16 / 9}
-      style={{ height: 'calc(100vh - 140px)' }}
+      style={{ height: isPreviewVideo ? 'calc(100vh - 140px)' : '100%', background: '#999' }}
     >
       {videoTrack ? (
         <VideoRenderer
           track={videoTrack}
           isLocal={isLocal}
-          objectFit="contain"
+          objectFit={objectFit}
           width="100%"
           height="100%"
+          {...props}
         />
       ) : (
         <div
@@ -33,7 +35,6 @@ function VideoElement({ videoTrack, isLocal = false }: Props) {
             width: '100%',
             height: '100%',
             borderRadius: 4,
-            background: '#999',
           }}
         >
           Placeholder

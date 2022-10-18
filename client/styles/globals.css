@@ -25,6 +25,11 @@ a {
   }
 }
 
+button{
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 video{
   border-radius: 4px;
 }
