@@ -15,33 +15,31 @@ interface Props extends RendererProps {
 
 function VideoElement({ videoTrack, isLocal = false }: Props) {
   return (
-    <div style={{ aspectRatio: 16 / 9, margin: '0 auto', maxWidth: 1440, width: '100%' }}>
-      <AspectRatio
-        ratio={16 / 9}
-        style={{ height: '100%' }}
-      >
-        {videoTrack ? (
-          <VideoRenderer
-            track={videoTrack}
-            isLocal={isLocal}
-            objectFit="contain"
-            width="100%"
-            height="100%"
-          />
-        ) : (
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: 4,
-              background: '#999',
-            }}
-          >
-            Placeholder
-          </div>
-        )}
-      </AspectRatio>
-    </div>
+    <AspectRatio
+      ratio={16 / 9}
+      style={{ height: 'calc(100vh - 140px)' }}
+    >
+      {videoTrack ? (
+        <VideoRenderer
+          track={videoTrack}
+          isLocal={isLocal}
+          objectFit="contain"
+          width="100%"
+          height="100%"
+        />
+      ) : (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: 4,
+            background: '#999',
+          }}
+        >
+          Placeholder
+        </div>
+      )}
+    </AspectRatio>
   );
 }
 export default VideoElement;

@@ -75,8 +75,8 @@ function PreJoin() {
   const toggleAudio = () => setAudioEnabled(prev => !prev);
 
   return (
-    <div style={{ padding: 10, display: 'grid', gap: 16 }}>
-      <header>
+    <div style={{ padding: 10, display: 'grid', gap: 16, maxWidth: 1300, margin: '0 auto' }}>
+      <header style={{ gap: 8, display: 'flex' }}>
         <input
           placeholder="Oda adını gir"
           value={roomName}
