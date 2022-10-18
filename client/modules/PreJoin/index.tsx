@@ -44,9 +44,20 @@ function PreJoin() {
       body: JSON.stringify(createTokenOptions),
     });
     const response: { token: string } = await request.json();
-    console.log(response.token);
     videoTrack?.stop();
-    push(`/room?roomName=${roomName}&participantName=${participantName}&token=${response.token}`);
+
+    /**
+     * Oda hakkındaki bilgileri şimdilik query ile gönderiyoruz.
+     */
+    const roomUrl = new URLSearchParams({
+      roomName,
+      participantName,
+      token: response.token,
+      video: String(videoEnabled),
+      auddio: String(audioEnabled),
+    }).toString();
+
+    push(`/room?${roomUrl}`);
   };
 
   const toggleVideo = async () => {
