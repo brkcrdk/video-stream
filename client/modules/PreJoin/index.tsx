@@ -10,7 +10,7 @@ import { CreateTokenProps } from '../../../server/types';
 function PreJoin() {
   const [roomName, setRoomName] = useState('');
   const [participantName, setParticipantName] = useState('');
-  const [videoEnabled, setVideoEnabled] = useState(false);
+  const [videoEnabled, setVideoEnabled] = useState(true);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [videoTrack, setVideoTrack] = useState<LocalVideoTrack | null>(null);
 
@@ -19,9 +19,17 @@ function PreJoin() {
   useEffect(() => {
     const getLocalAudio = async () => {
       await createLocalAudioTrack();
+      const localVideo = await createLocalVideoTrack();
+      setVideoTrack(localVideo);
     };
     getLocalAudio();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      videoTrack?.stop();
+    };
+  }, [videoTrack]);
 
   const handleConnect = async () => {
     const createTokenOptions: CreateTokenProps = {
