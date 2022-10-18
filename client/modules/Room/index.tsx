@@ -8,32 +8,20 @@ import StageRenderer from './StageRenderer';
 function RoomT() {
   const {
     push,
-    query: { token },
+    query: { token, video, audio },
   } = useRouter();
 
-  const { room, participants } = useRoom();
+  // const { room, participants } = useRoom();
 
   if (!token) return null;
 
   const onConnected = async (room: Room) => {
-    // make it easier to debug
-    (window as any).currentRoom = room;
-
-    // if (isSet(query, 'audioEnabled')) {
-    //   const audioDeviceId = query.get('audioDeviceId');
-    //   if (audioDeviceId && room.options.audioCaptureDefaults) {
-    //     room.options.audioCaptureDefaults.deviceId = audioDeviceId;
-    //   }
-    await room.localParticipant.setMicrophoneEnabled(true);
-    // }
-
-    // if (isSet(query, 'videoEnabled')) {
-    //   const videoDeviceId = query.get('videoDeviceId');
-    //   if (videoDeviceId && room.options.videoCaptureDefaults) {
-    //     room.options.videoCaptureDefaults.deviceId = videoDeviceId;
-    //   }
-    await room.localParticipant.setCameraEnabled(true);
-    // }
+    if (audio === 'true') {
+      await room.localParticipant.setMicrophoneEnabled(true);
+    }
+    if (video === 'true') {
+      await room.localParticipant.setCameraEnabled(true);
+    }
   };
 
   return (
