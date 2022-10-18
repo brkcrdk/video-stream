@@ -97,6 +97,7 @@ function PreJoin() {
       <VideoElement
         videoTrack={videoEnabled ? videoTrack : null}
         isLocal
+        isPreviewVideo
       />
       <button onClick={toggleVideo}>Video Aç/Kapa</button>
       <button onClick={toggleAudio}>Sesi Aç/Kapa</button>
