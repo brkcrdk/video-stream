@@ -23,6 +23,7 @@
     "react/self-closing-comp": "error",
     "no-undef": "error",
     "prettier/prettier": "error",
+    "object-shorthand":"error",
     "react/jsx-curly-brace-presence": [
       "error",
       {
