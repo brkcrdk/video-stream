@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { VideoElement } from 'components';
 import { createLocalAudioTrack, createLocalVideoTrack, LocalVideoTrack, isBrowserSupported } from 'livekit-client';
+
+import { VideoElement, Modal } from 'components';
 
 import { CreateTokenProps } from '../../../server/types';
 
@@ -101,6 +102,7 @@ function PreJoin() {
       />
       <button onClick={toggleVideo}>Video Aç/Kapa</button>
       <button onClick={toggleAudio}>Sesi Aç/Kapa</button>
+      <Modal open>Test</Modal>
     </div>
   );
 }
