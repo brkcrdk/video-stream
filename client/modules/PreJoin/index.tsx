@@ -102,7 +102,8 @@ function PreJoin() {
       />
       <button onClick={toggleVideo}>Video Aç/Kapa</button>
       <button onClick={toggleAudio}>Sesi Aç/Kapa</button>
-      <Modal open>Test</Modal>
+      {/* <Modal open>Test</Modal> */}
+      {/* <Modal /> */}
     </div>
   );
 }
