@@ -4,10 +4,12 @@
     "isolatedModules": false,
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress","../support"]
+    "jsx": "react-jsx",
+    "types": ["cypress"],
   },
   "include": [
     "../node_modules/cypress",
-    "./**/*.ts"
+    "./**/*.ts",
+    "./**/*.tsx"
   ]
 }
