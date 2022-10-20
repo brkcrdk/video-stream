@@ -1,6 +1,7 @@
 import { useParticipant } from '@livekit/react-components';
-import { VideoElement } from 'components';
 import { Participant } from 'livekit-client';
+
+import { VideoElement } from 'components';
 
 interface Props {
   participant: Participant;
