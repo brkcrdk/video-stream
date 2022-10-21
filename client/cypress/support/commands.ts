@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
@@ -35,6 +36,16 @@
 //     }
 //   }
 // }
+
+declare namespace Cypress {
+  interface Chainable {
+    /**
+     * Custom command to select DOM element by data-cy attribute with timeout per ms
+     * @example cy.dataCy('greeting', { timeout: 50000 })
+     */
+    dataCy(value: string): Chainable<Element>;
+  }
+}
 
 Cypress.Commands.add('dataCy', value => {
   cy.get(`[data-cy="${value}"]`);

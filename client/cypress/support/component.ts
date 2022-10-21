@@ -14,11 +14,13 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+import { mount } from 'cypress/react18';
 import './commands';
 
-import { mount } from 'cypress/react18';
-
+/**
+ * declerationları components.d.ts ile çalışmadığı için bu şekilde ve dökümantasyonda da
+ * bu şekilde oluşturulduğu için bu dosya içinde oluşturuyorum
+ */
 declare global {
   namespace Cypress {
     interface Chainable {
