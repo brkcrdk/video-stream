@@ -19,6 +19,9 @@ const theme: DefaultTheme = {
     bold: 700,
     black: 900,
   },
+  fontSizes: {
+    base: '1rem', // 16px
+  },
 };
 
 export default theme;
