@@ -2,7 +2,18 @@ import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
   colors: {
-    primary: '#1EA4CE',
+    primary: '#1ea4ce',
+    grayScale: {
+      gray100: '#f8f9fa',
+      gray200: '#e9ecef',
+      gray300: '#dee2e6',
+      gray400: '#f2f2f2',
+      gray500: '#e0e0e0',
+      gray600: '#bdbdbd',
+      gray700: '#828282',
+      gray800: '#4f4f4f',
+      gray900: '#333333',
+    },
   },
   fontSizes: {
     base: '1rem', // 16px

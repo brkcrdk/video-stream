@@ -77,7 +77,7 @@ function PreJoin() {
 
   return (
     <div style={{ padding: 10, display: 'grid', gap: 16, maxWidth: 1300, margin: '0 auto' }}>
-      <header style={{ gap: 8, display: 'flex' }}>
+      {/* <header style={{ gap: 8, display: 'flex' }}>
         <input
           placeholder="Oda adını gir"
           value={roomName}
@@ -101,9 +101,9 @@ function PreJoin() {
         isPreviewVideo
       />
       <button onClick={toggleVideo}>Video Aç/Kapa</button>
-      <button onClick={toggleAudio}>Sesi Aç/Kapa</button>
-      {/* <Modal open>Test</Modal> */}
-      {/* <Modal /> */}
+      <button onClick={toggleAudio}>Sesi Aç/Kapa</button> */}
+      <button>Open Modal</button>
+      <Modal open>Modal is opened here</Modal>
     </div>
   );
 }
