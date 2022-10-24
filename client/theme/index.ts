@@ -47,6 +47,13 @@ const theme = {
     mini: '(max-width: 425px)',
   },
   utils: {
+    /**
+     * Bir paragrafta belirli bir satırdan sonraki içeriği `...` şeklinde kesmek için kullanılır.
+     *
+     * https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+     *
+     * @param clampCount Kaç satır gösterileceğini ifade eder
+     */
     lineClamp: (clampCount: number) => `
     display: -webkit-box;
     -webkit-line-clamp: ${clampCount};
