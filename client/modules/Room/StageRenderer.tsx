@@ -4,6 +4,7 @@ import { StageProps } from '@livekit/react-components';
 import { Participant } from 'livekit-client';
 
 import ParticipantVideo from './ParticipantVideo';
+
 function StageRenderer({ roomState }: StageProps) {
   console.log(roomState);
   const { isConnecting, error, room } = roomState;
