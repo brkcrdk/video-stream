@@ -55,7 +55,7 @@ function PreJoin() {
       participantName,
       token: response.token,
       video: String(videoEnabled),
-      auddio: String(audioEnabled),
+      audio: String(audioEnabled),
     }).toString();
 
     push(`/room?${roomUrl}`);
